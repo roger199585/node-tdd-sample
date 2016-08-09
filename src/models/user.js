@@ -2,16 +2,15 @@
 
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
-    username: DataTypes.STRING,
+    name: DataTypes.STRING,
     email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    age: DataTypes.INTEGER,
+    fbid: DataTypes.STRING
   }, {
     classMethods: {
       associate: (models) => {
       }
     }
-  });
+  })
 
-  return User;
-};
+  return User
+}

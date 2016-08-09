@@ -198,3 +198,42 @@ describe('database task1 find', () => {
   });
 
 });
+
+describe.only('model define', () => {
+
+  let models = null;
+  beforeEach(async (done) => {
+    try {
+      models = await task1_initModel()
+      done()
+    } catch (e) {
+      done(e)
+    }
+  })
+
+  it('model define', (done) => {
+    try {
+      let addUser = {
+        name: 'test', fbid: 'test', email: 'test@test.test'
+      }
+      let result = {}
+      result = await models.User.create(addUser)
+      result.toJSON().should.has.keys(
+        'id',
+        'name',
+        'fbid',
+        'email',
+        'createdAt',
+        'updatedAt'
+      )
+      result.name.should.be.eq('test')
+      result.name.should.be.string
+      result.fbid.should.be.string
+      result.email.should.be.string
+      done()
+    } catch (e) {
+      done(e)
+    }
+  });
+
+})

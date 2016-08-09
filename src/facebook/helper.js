@@ -8,7 +8,7 @@ import FB from 'fb'
 // };
 
 export default class FacebookHelper {
-
+  
   constructor({token, userId}) {
     this.FB = FB;
     this.FB.setAccessToken(token);
